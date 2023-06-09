@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../axiosConfig'; 
+
 
 function EditarPerfil({ usuario, toggleEditarPerfil }) {
   const [nome, setNome] = useState('');
@@ -20,9 +21,9 @@ function EditarPerfil({ usuario, toggleEditarPerfil }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-  
+
     // Verifica se o email já está sendo usado em outra conta
-    axios.get(`http://localhost:3001/usuarios?email=${email}`)
+    axios.get(`/usuarios?email=${email}`)
       .then((response) => {
         const usuarios = response.data;
         if (usuarios.length > 0 && usuarios[0].id !== id) {
@@ -30,7 +31,7 @@ function EditarPerfil({ usuario, toggleEditarPerfil }) {
         } else if (senha.length > 0 && senha.length < 6) {
           setMensagem('A nova senha deve ter pelo menos 6 caracteres.');
         } else {
-          axios.patch(`http://localhost:3001/usuarios/${id}`, {
+          axios.patch(`/usuarios/${id}`, {
             nome,
             email,
             senha,
@@ -116,14 +117,14 @@ function EditarPerfil({ usuario, toggleEditarPerfil }) {
 
             {mensagem && <div className="alert alert-primary" role="alert">{mensagem}</div>}
             <div className="text-center">
-          <button type="submit" className="btn btn-primary">Atualizar</button>
-          <button type="button" className="btn btn-secondary" onClick={toggleEditarPerfil}>Cancelar</button>
+              <button type="submit" className="btn btn-primary">Atualizar</button>
+              <button type="button" className="btn btn-secondary" onClick={toggleEditarPerfil}>Cancelar</button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
-</div>
-);
+  );
 }
 
 export default EditarPerfil;
