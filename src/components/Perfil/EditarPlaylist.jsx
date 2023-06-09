@@ -4,7 +4,7 @@ import Navbar from '../home/Navbar';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from '../home/Footer';
-import axios from '../axiosConfig'; 
+import instance from '../axiosConfig'; 
 
 
 
@@ -19,13 +19,13 @@ function EditarPlaylist() {
   const [mensagem, setMensagem] = useState('');
 
   useEffect(() => {
-    axios
+    instance
       .get(`/playlistsPrivadas/${id}`)
       .then((res) => {
         setNomePlaylist(res.data.nome);
         setMusicasAdicionadas(res.data.musicas);
       });
-    axios.get('/musicas').then((res) => {
+    instance.get('/musicas').then((res) => {
       setMusicasDisponiveis(res.data);
     });
   }, [id]);
@@ -42,7 +42,7 @@ function EditarPlaylist() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.patch(`/playlistsPrivadas/${id}`, {
+    instance.patch(`/playlistsPrivadas/${id}`, {
       nome: nomePlaylist,
       musicas: musicasAdicionadas
     }).then(() => navigate('/perfil'));

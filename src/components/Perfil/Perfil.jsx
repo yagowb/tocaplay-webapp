@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Card, Button } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from '../axiosConfig'; 
+import instance from '../axiosConfig'; 
 
 
 
@@ -13,7 +13,7 @@ function Perfil({ toggleEditarPerfil }) {
   let [playlistsPrivadas, setPlaylistsPrivadas] = useState([]);
 
   useEffect(() => {
-    axios
+    instance
       .get(`/playlistsPrivadas?idUsuario=${id}`)
       .then((response) => {
         setPlaylistsPrivadas(response.data);
@@ -33,7 +33,7 @@ function Perfil({ toggleEditarPerfil }) {
   };
 
   function cadastrarPlaylists() {
-    axios.post(`/usuarios/${id}/playlistsPrivadas`, {
+    instance.post(`/usuarios/${id}/playlistsPrivadas`, {
       idUsuario: id,
       nome: nomePlaylist,
       musicas: musicasPlaylist
@@ -50,7 +50,7 @@ function Perfil({ toggleEditarPerfil }) {
   //***********************************************/
   async function adicionarMusicas(id) {
     try {
-      const response = await axios.get(`/musicas/${id}`);
+      const response = await instance.get(`/musicas/${id}`);
       const musica = response.data;
       if (musicasPlaylist == null) {
         setMusicasPlaylist([musica]);
@@ -82,7 +82,7 @@ function Perfil({ toggleEditarPerfil }) {
         return;
       }
       setSearchClicked(true);
-      const resposta = await axios.get('/musicas');
+      const resposta = await instance.get('/musicas');
       const resultadosFiltrados = resposta.data.filter(
         (item) =>
           item.nome.toLowerCase().includes(pesquisa.toLowerCase())

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import logo from '../../imgs/logo1.png';
 import { Link } from 'react-router-dom';
-import axios from '../axiosConfig'; 
+import instance from '../axiosConfig'; 
 
 function PlaylistPage() {
   let { _id } = useParams();
@@ -11,7 +11,7 @@ function PlaylistPage() {
   const [playlist, setPlaylist] = useState({ musicas: [] });
 
   useEffect(() => {
-    axios.get(`/playlists/${_id}`).then((res) => setPlaylist(res.data));
+    instance.get(`/playlists/${_id}`).then((res) => setPlaylist(res.data));
   }, []);
 
   const start = (track) => {

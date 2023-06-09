@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../axiosConfig';
+import instance from '../axiosConfig';
 
 
 function Cadastro() {
@@ -21,13 +21,13 @@ function Cadastro() {
     }
 
     try {
-      const response = await axios.post('/usuarios', {
+      const response = await instance.post('/usuarios', {
         nome: username,
         email: email,
         senha: password
       });
 
-      console.log(response.data); // Aqui você pode tratar a resposta do servidor
+      console.log(response.data); 
 
       setEmail('');
       setEmailConfirmacao('');

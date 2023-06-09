@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import axios from '../axiosConfig'; 
+import instance from '../axiosConfig'; 
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ function Login() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    axios.get(`/usuarios?email=${email}`).then((resultado) => {
+    instance.get(`/usuarios?email=${email}`).then((resultado) => {
       const usuario = resultado.data;
       console.log(usuario);
       if (!usuario || usuario.senha !== senha) {
