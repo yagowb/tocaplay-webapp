@@ -8,16 +8,19 @@ function Carrosel() {
   const [width, setWidth] = useState(0);
   const [playlists, setPlaylists] = useState([]);
   
-  useEffect(() => {
+  useEffect(() =>{
+
+
     instance.get('/playlists')
-      .then(res => {
-        setPlaylists(res.data);
-        setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth);
-      });
-  }, []);
+      .then(res=>
+      (setPlaylists(res.data)
+      (setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth))
+      ))
+    
+  }, [])
   
   const dragX = useMotionValue(0);
-  const dragConstraints = useTransform(dragX, x => ({
+  const dragConstraints = useTransform(dragX, x0 => ({
     left: -width,
     right: 0,
   }));
