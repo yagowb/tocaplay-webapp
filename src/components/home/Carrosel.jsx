@@ -12,9 +12,7 @@ function Carrosel() {
   const [playlists, setPlaylists] = useState([])
 
   useEffect(() =>{
-    
-
-    instance.get('http://localhost:3001/playlists')
+    instance.get('/playlists')
       .then(res=>
       (setPlaylists(res.data)
       (setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth))
@@ -36,7 +34,7 @@ function Carrosel() {
             {playlists.map(image => (
               <motion.div className='item' key={image}>
                   <img src ={image.capa} alt="texto alt"/>
-                <Link to={`/playlist/${image._id}`}>
+                <Link to={`/playlists/${image._id}`}>
                   <button className='botao-playlist'>Acessar Playlist</button>
                 </Link>
               </motion.div>
