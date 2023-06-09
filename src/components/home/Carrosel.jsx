@@ -14,7 +14,7 @@ function Carrosel() {
   useEffect(() =>{
     
 
-    instance.get('http://localhost:3001/playlists')
+    instance.get('/playlists')
       .then(res=>
       (setPlaylists(res.data)
       (setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth))
