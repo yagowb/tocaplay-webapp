@@ -4,7 +4,9 @@ import Navbar from '../home/Navbar';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Footer from '../home/Footer';
-import axios from 'axios';
+import axios from '../axiosConfig'; 
+
+
 
 function EditarPlaylist() {
   const { id } = useParams();
@@ -16,28 +18,23 @@ function EditarPlaylist() {
   const [musicasDisponiveis, setMusicasDisponiveis] = useState([]);
   const [mensagem, setMensagem] = useState('');
 
-
-
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/playlistsPrivadas/${id}`)
+      .get(`/playlistsPrivadas/${id}`)
       .then((res) => {
         setNomePlaylist(res.data.nome);
         setMusicasAdicionadas(res.data.musicas);
       });
-    axios.get('http://localhost:3001/musicas').then((res) => {
+    axios.get('/musicas').then((res) => {
       setMusicasDisponiveis(res.data);
     });
   }, [id]);
-
-
 
   function handleAddMusica(musica) {
     setMusicasAdicionadas((prevMusicas) => [...prevMusicas, musica]);
   }
 
   function handleRemoveMusica(musica) {
-    console.log(musica)
     setMusicasAdicionadas((prevMusicas) =>
       prevMusicas.filter((m) => m.nome !== musica.nome)
     );
@@ -45,10 +42,10 @@ function EditarPlaylist() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.patch(`http://localhost:3001/playlistsPrivadas/${id}`,{
+    axios.patch(`/playlistsPrivadas/${id}`, {
       nome: nomePlaylist,
       musicas: musicasAdicionadas
-    }).then(navigate('/perfil'))
+    }).then(() => navigate('/perfil'));
   }
 
   if (!usuario) {
@@ -162,7 +159,6 @@ function EditarPlaylist() {
       </div>
     </>
   );
-  
 }
 
 export default EditarPlaylist;
