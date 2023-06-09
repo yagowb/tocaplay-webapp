@@ -1,7 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
 import {motion} from 'framer-motion';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import instance from 'axios';
 
 
 function Carrosel() {
@@ -14,7 +14,7 @@ function Carrosel() {
   useEffect(() =>{
     
 
-    axios.get('http://localhost:3001/playlists')
+    instance.get('http://localhost:3001/playlists')
       .then(res=>
       (setPlaylists(res.data)
       (setWidth(carrosel.current?.scrollWidth - carrosel.current?.offsetWidth))
