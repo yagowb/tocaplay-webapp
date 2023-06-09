@@ -11,8 +11,12 @@ function PlaylistPage() {
   const [playlist, setPlaylist] = useState({ musicas: [] });
 
   useEffect(() => {
-    instance.get(`/playlists/${_id}`).then((res) => setPlaylist(res.data));
+    instance.get(`/playlists/${_id}`).then((res) => {
+      console.log(res.data); // Verifique se a resposta da API está correta
+      setPlaylist(res.data);
+    });
   }, []);
+  
 
   const start = (track) => {
     if (currentTrack) {
