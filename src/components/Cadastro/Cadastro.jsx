@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from './axiosConfig';
 
 
 function Cadastro() {
-
   const [email, setEmail] = useState('');
   const [emailConfirmacao, setEmailConfirmacao] = useState('');
   const [username, setUsername] = useState('');
@@ -13,30 +12,39 @@ function Cadastro() {
   const [styles, setStyles] = useState([]);
   const navigate = useNavigate();
 
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    console.log({email, emailConfirmacao, username, password, styles});
+    console.log({ email, emailConfirmacao, username, password, styles });
     if (email !== emailConfirmacao) {
       setError('Os e-mails não correspondem');
       return;
     }
-    setEmail('');
-    setEmailConfirmacao('');
-    setUsername('');
-    setPassword('');
-    setStyles('');
-    setError('');
-    setError('Cadastro Realizado')
-    setTimeout(() => {
-      navigate('/');
-    }, 3000);
-    axios.post('http://localhost:3001/usuarios',{
-      nome:username,
-      email:email,
-      senha:password
-    })
+
+    try {
+      const response = await axios.post('/usuarios', {
+        nome: username,
+        email: email,
+        senha: password
+      });
+
+      console.log(response.data); // Aqui você pode tratar a resposta do servidor
+
+      setEmail('');
+      setEmailConfirmacao('');
+      setUsername('');
+      setPassword('');
+      setStyles([]);
+      setError('Cadastro Realizado');
+
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+      setError('Ocorreu um erro durante o cadastro');
     }
+  }
+
   
     return (
         <div className="container">
