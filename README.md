@@ -1,53 +1,54 @@
-# TocaPlay - Portal de Música
+# TocaPlay - Music Portal
 
 
-Este é um projeto de portal de música estilo Spotify chamado TocaPlay, desenvolvido em React para a disciplina de Desenvolvimento para Plataformas Web - UNIFOR 2023.1. 
+This is a Spotify-style music portal project called TocaPlay, developed in React for the course Development for Web Platforms - UNIFOR 2023.1. 
 
 
-## Funcionalidades 
+## Functionalities 
 
-- Pesquisar músicas: Os usuários podem buscar por suas músicas favoritas usando palavras-chave, títulos de músicas ou artistas.
-- Ouvir playlists públicas: Os usuários têm acesso a uma ampla gama de playlists públicas criadas por outros usuários. Eles podem explorar, reproduzir e descobrir novas músicas.
-- Criar perfil de usuário: Os usuários podem criar seu próprio perfil no TocaPlay, fornecendo informações básicas e preferências musicais.
-- Personalizar perfil de usuário: Os usuários têm a opção de personalizar seu perfil adicionando uma foto de perfil, uma descrição e escolhendo um tema de cores.
-- Criar e personalizar playlists privadas: Os usuários podem criar playlists privadas personalizadas com suas músicas favoritas. Eles têm controle total sobre a adição, remoção e organização das músicas em suas playlists privadas.
+- Search for music: Users can search for their favourite songs using keywords, song titles or artists.
+- Listen to public playlists: Users have access to a wide range of public playlists created by other users. They can explore, play and discover new music.
+- Create user profile: Users can create their own profile on TocaPlay, providing basic information and musical preferences.
+- Personalise user profile: Users have the option of personalising their profile by adding a profile photo, a description and choosing a colour theme.
+- Create and personalise private playlists: Users can create personalised private playlists with their favourite songs. They have full control over adding, removing and organising the songs in their private playlists.
 
 
-## Requisitos de Instalação
+## Installation requirements
 
-Para executar o projeto TocaPlay localmente, siga estas etapas:
+To run the TocaPlay project locally, follow these steps:
 
-1. Clone este repositório em sua máquina local.
+1. Clone this repository on your local machine.
 ```markdown
 git clone https://github.com/yagowb/spotifyweb-reactapp
 ```
 
 
-2. Certifique-se de ter o Node.js instalado em sua máquina. 
-Para mais informações sobre como instalar o Node.js, visite: [https://nodejs.org](https://nodejs.org)
+2. Make sure you have Node.js installed on your machine. 
+For more information on how to install Node.js, visit: [https://nodejs.org](https://nodejs.org)
 
-3. Acesse o diretório do projeto e instale as dependências executando o seguinte comando:
+
+3. Access the project directory and install the dependencies by running the following command:
 ```markdown
 npm install
 ```
 
 
-4. Após a conclusão da instalação das dependências, inicie o servidor de desenvolvimento:
+4. Once the dependencies have been installed, start the development server:
 ```markdown
 npm start
 ```
 
 
-5. Aguarde até que o servidor seja iniciado e, em seguida, abra o navegador e visite `http://localhost:3000` para acessar o TocaPlay.
+5. Wait for the server to start, then open your browser and visit `http://localhost:3000` to access TocaPlay.
 
-## Contribuição
+## Contribution
 
-Contribuições são bem-vindas! Se você deseja melhorar o TocaPlay, sinta-se à vontade para enviar pull requests. Certifique-se de discutir quaisquer alterações importantes antes de enviá-las.
+Contributions are welcome! If you want to improve TocaPlay, feel free to send pull requests. Be sure to discuss any important changes before sending them.
 
-## Licença
+## Licence
 
-Este projeto está licenciado sob a [MIT License]. Sinta-se à vontade para usar, modificar e distribuir o TocaPlay de acordo com os termos da licença.
+This project is licensed under the [MIT License]. Feel free to use, modify and distribute TocaPlay according to the terms of the licence.
 
-## Contato
+## Contact
 
-Se você tiver alguma dúvida ou sugestão relacionada ao TocaPlay, entre em contato conosco pelo email yagowb@gmail.com
+If you have any questions or suggestions regarding TocaPlay, please contact us at yagowb@gmail.com.
